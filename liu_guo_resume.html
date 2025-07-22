@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘果 - 个人简历</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .experience-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 25px;
+            width: 10px;
+            height: 10px;
+            background: #3498db;
+            border-radius: 50%;
+        }
+
+        .experience-title {
+            color: #2c3e50;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience-date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .experience-desc {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .project-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .project-item:hover::before {
+            transform: rotate(45deg) translateX(100%);
+        }
+
+        .project-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-role {
+            opacity: 0.9;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-desc {
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .education-item {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .personal-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3498db, #2c3e50);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .personal-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 class="name">刘果</h1>
+            <p class="title">大数据管理与应用专业 | 26届毕业生</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>13142205524</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>13142205524@163.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>成都</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>期望薪资: 2K-4K</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section fade-in">
+                    <h2><i class="fas fa-user-circle"></i> 基本信息</h2>
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>2002.06</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-mars"></i>
+                            <span>男</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-flag"></i>
+                            <span>汉族</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-heart"></i>
+                            <span>未婚</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section fade-in">
+                    <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
+                    <div class="education-item">
+                        <h3>成都锦城学院</h3>
+                        <p>大数据管理与应用 | 本科</p>
+                        <p>26届毕业生</p>
+                    </div>
+                </section>
+
+                <section class="section fade-in">
+                    <h2><i class="fas fa-tools"></i> 技能专长</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <strong>编程语言</strong><br>
+                            Python、Java、SQL
+                        </div>
+                        <div class="skill-item">
+                            <strong>数据分析</strong><br>
+                            SPSS、Pandas、数据挖掘
+                        </div>
+                        <div class="skill-item">
+                            <strong>可视化工具</strong><br>
+                            Power BI、Matplotlib
+                        </div>
+                        <div class="skill-item">
+                            <strong>数据库</strong><br>
+                            MySQL、数据库优化
+                        </div>
+                        <div class="skill-item">
+                            <strong>大数据技术</strong><br>
+                            Hadoop、Linux运维
+                        </div>
+                        <div class="skill-item">
+                            <strong>开发工具</strong><br>
+                            Jupyter、活字格低代码
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+            <main>
+                <section class="section fade-in">
+                    <h2><i class="fas fa-briefcase"></i> 工作经历</h2>
+                    <div class="timeline">
+                        <div class="experience-item">
+                            <div class="experience-title">实习助理</div>
+                            <div class="experience-company">学校老师大数据项目实习</div>
+                            <div class="experience-date">2024.09 - 2025.07</div>
+                            <div class="experience-desc">
+                                参与指导老师的软件项目，负责检查项目代码中的错误和异常，包括语法错误、格式不规范、逻辑冲突等。协助完成项目数据库（MySQL）的基础数据录入、字段命名规范审核、数据表结构校对等工作。
+                                <br><br>
+                                <strong>实习成果：</strong> 检查多个功能模块，累计发现并反馈错误问题20余项；协助修正数据库字段设计中的多处命名冲突与字段类型不一致问题。
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="experience-title">会计助理</div>
+                            <div class="experience-company">鼎益塑料制造有限公司</div>
+                            <div class="experience-date">2023.06 - 2023.11</div>
+                            <div class="experience-desc">
+                                协助会计团队整理并分析财务报表，确保数据准确无误，提高了月度结账效率约20%。运用Excel和数据分析工具对生产流程中的关键指标进行监控与分析，为公司节省了约5%的制造成本。
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section fade-in">
+                    <h2><i class="fas fa-project-diagram"></i> 项目经历</h2>
+                    <div class="project-item">
+                        <div class="project-title">第七次全国人口普查数据分析项目</div>
+                        <div class="project-role">组长 | 2025.03 - 2025.07</div>
+                        <div class="project-desc">
+                            使用Python、Jupyter Notebook进行数据分析，运用Pandas进行数据统计、特征提取与指标计算。分析人口年龄结构、性别比例、区域分布等核心特征，独立完成数据分析与图表可视化。
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-title">图书馆在线管理系统</div>
+                        <div class="project-role">组员 | 2025.03 - 2025.07</div>
+                        <div class="project-desc">
+                            基于活字格低代码平台，协助设计并搭建图书馆图书管理系统，实现图书的增删改查、借还管理等功能模块。配置并连接MySQL数据库，负责系统功能逻辑的测试与优化。
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-title">大学生网络游戏行为调研项目</div>
+                        <div class="project-role">组长 | 2024.09 - 2024.11</div>
+                        <div class="project-desc">
+                            设计关于大学生网络游戏行为的调研问卷，收集超200份有效问卷数据，使用SPSS进行频数分析、交叉分析、回归分析等。报告逻辑清晰、数据支持充分，获得项目展示优秀评价。
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section fade-in">
+                    <h2><i class="fas fa-user-check"></i> 自我评价</h2>
+                    <div class="experience-item">
+                        <p>我是大数据管理与应用专业的一名在校大学生，具备较强的学习能力和动手实践能力。在校期间积极参与多个项目，涵盖系统开发、数据分析与调研建模，积累了扎实的实践经验。</p>
+                        <br>
+                        <p>熟练运用Python、Jupyter、SPSS等工具对实际数据进行处理和建模，具备一定的数据洞察力和逻辑思维能力。性格踏实，责任心强，善于团队协作，能够在实践中不断提升自我，具备良好的发展潜力和岗位适应能力。</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 添加滚动动画效果
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.3s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // 添加技能项目悬停效果
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+
+        // 添加项目卡片3D效果
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+    </script>
+</body>
+</html>
